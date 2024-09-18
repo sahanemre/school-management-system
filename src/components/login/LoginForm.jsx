@@ -21,6 +21,7 @@ const LoginForm = () => {
       .then((response) => {
         if (response.status == 200) {
           localStorage.setItem('authToken', response.data.token)
+          localStorage.setItem('userType', response.data.usertype)
           navigate('/')
         } else {
           setError('Geçersiz email veya şifre')

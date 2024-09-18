@@ -14,7 +14,11 @@ router.post('/', (req, res) => {
     }
 
     if (results.length > 0) {
-      res.status(200).json({ message: 'Giriş başarılı!' })
+      const user = results[0]
+      console.log(user)
+      res
+        .status(200)
+        .json({ message: 'Giriş başarılı!', usertype: user.USERTYPE })
     } else {
       res.status(401).json({ message: 'Geçersiz email veya şifre' })
     }
