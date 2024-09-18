@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -17,10 +19,9 @@ const LoginForm = () => {
         password: password,
       })
       .then((response) => {
-        // Giriş başarılı olduğunda gelen yanıtı kontrol et
-        if (response.data.message === 'Giriş başarılı!') {
-          setSuccess('Giriş başarılı!')
-          setError('')
+        if (response.status == 200) {
+          localStorage.setItem('authToken', response.data.token)
+          navigate('/')
         } else {
           setError('Geçersiz email veya şifre')
           setSuccess('')
