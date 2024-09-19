@@ -2,6 +2,11 @@ import React from 'react'
 import './sidebar.css'
 
 const Sidebar = () => {
+  const handleLogout = () => {
+    localStorage.removeItem('authToken')
+    localStorage.removeItem('userType')
+    window.location.href = '/login'
+  }
   return (
     <div className="sidebar">
       <div className="logo">
@@ -20,12 +25,15 @@ const Sidebar = () => {
         <i className="bi bi-grid"></i> Products
       </a>
 
-      <div className="profile-section">
-        <img src="https://via.placeholder.com/40" alt="profile" />
-        <div className="dropdown">
-          <span>mdo</span>
-          <i className="bi bi-chevron-down"></i>
-        </div>
+      <div className="logout-profile">
+        <button
+          type="button"
+          className="btn btn-danger btn-block"
+          style={{ padding: '1rem' }}
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
       </div>
     </div>
   )

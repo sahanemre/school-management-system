@@ -1,6 +1,7 @@
 import React from 'react'
 import Login from './components/login/Login'
 import './index.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
