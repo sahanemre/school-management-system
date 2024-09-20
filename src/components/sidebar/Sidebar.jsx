@@ -1,5 +1,6 @@
 import React from 'react'
 import './sidebar.css'
+import { useNavigate } from 'react-router-dom'
 
 const Sidebar = () => {
   const handleLogout = () => {
@@ -7,19 +8,22 @@ const Sidebar = () => {
     localStorage.removeItem('userType')
     window.location.href = '/login'
   }
+
+  const navigate = useNavigate()
+  const handleTeacherClick = () => {
+    navigate('/teacher')
+  }
+
   return (
     <div className="sidebar">
       <div className="logo">
         <i className="bi bi-bootstrap"></i> Sidebar
       </div>
-      <a href="#home" className="active">
-        <i className="bi bi-house"></i> Home
-      </a>
       <a href="#dashboard">
         <i className="bi bi-speedometer2"></i> Dashboard
       </a>
-      <a href="#orders">
-        <i className="bi bi-table"></i> Orders
+      <a href="#Teacher" onClick={handleTeacherClick}>
+        <i className="bi bi-table"></i> Teacher
       </a>
       <a href="#products">
         <i className="bi bi-grid"></i> Products

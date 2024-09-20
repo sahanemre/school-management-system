@@ -1,11 +1,12 @@
 const express = require('express')
 const db = require('../db/db')
+const queris = require('../db/sql')
 
 const router = express.Router()
 
 router.post('/', (req, res) => {
   const { email, password } = req.body
-  const sql = 'SELECT * FROM userinf WHERE email = ? AND password = ?'
+  const sql = queris.loginUser
 
   db.query(sql, [email, password], (err, results) => {
     if (err) {

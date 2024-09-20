@@ -14,7 +14,7 @@ const LoginForm = () => {
     console.log(email, password)
 
     axios
-      .post('http://localhost:8081/school_db', {
+      .post('http://localhost:8081/school_db/auth', {
         email: email,
         password: password,
       })

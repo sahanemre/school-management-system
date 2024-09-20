@@ -9,6 +9,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Homepage from './pages/Homepage'
 import ProtectedRoute from './components/login/ProtectedRoute'
+import TeacherPage from './pages/TeacherPage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <ProtectedRoute element={<Homepage />} />,
+  },
+  {
+    path: '/teacher',
+    element: <TeacherPage />,
   },
 ])
 
