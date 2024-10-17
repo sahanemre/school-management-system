@@ -96,3 +96,16 @@
 }
 
 /* LOGIN */
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  border: 2px solid green;
+}
+.content {
+  flex: 1;
+  margin-left: 250px;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+  border: 2px solid red;
+}

@@ -10,6 +10,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Homepage from './pages/Homepage'
 import ProtectedRoute from './components/login/ProtectedRoute'
 import TeacherPage from './pages/TeacherPage'
+import Sidebar from './components/sidebar/Sidebar'
+import SidebarLayout from './components/common/SidebarLayout'
+import Dashboard from './pages/Dashboard'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,11 +29,31 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <ProtectedRoute element={<Homepage />} />,
+    element: (
+      <ProtectedRoute
+        element={
+          <SidebarLayout>
+            <Homepage />
+          </SidebarLayout>
+        }
+      />
+    ),
   },
   {
     path: '/teacher',
-    element: <TeacherPage />,
+    element: (
+      <SidebarLayout>
+        <TeacherPage />
+      </SidebarLayout>
+    ),
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <SidebarLayout>
+        <Dashboard />
+      </SidebarLayout>
+    ),
   },
 ])
 

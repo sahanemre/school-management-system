@@ -19,7 +19,7 @@ const Sidebar = () => {
       <div className="logo">
         <i className="bi bi-bootstrap"></i> Sidebar
       </div>
-      <a href="#dashboard">
+      <a href="#dashboard" onClick={() => navigate('/dashboard')}>
         <i className="bi bi-speedometer2"></i> Dashboard
       </a>
       <a href="#Teacher" onClick={handleTeacherClick}>

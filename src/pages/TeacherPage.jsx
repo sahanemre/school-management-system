@@ -3,10 +3,16 @@ import Sidebar from '../components/sidebar/Sidebar'
 import TeacherList from '../components/teacher/TeacherList'
 import axios from 'axios'
 import TeacherFilter from '../components/teacher/TeacherFilter'
+import { Button, Modal } from 'react-bootstrap'
+import AddPerson from '../components/common/AddPerson'
 
 const TeacherPage = () => {
   const [teacherList, setTeacherList] = useState([])
   const [searchItem, setSearchItem] = useState('')
+
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   useEffect(() => {
     axios
@@ -28,10 +34,7 @@ const TeacherPage = () => {
   return (
     <div>
       <Sidebar />
-      <div
-        className="teacher-content"
-        style={{ marginLeft: '250px', border: '2px solid red' }}
-      >
+      <div className="teacher-content" style={{ border: '2px solid red' }}>
         <div className="teacher-page">
           <div className="teacher-container">
             <section
@@ -52,7 +55,11 @@ const TeacherPage = () => {
                 <button type="button" className="btn btn-light">
                   Export CSV
                 </button>
-                <button type="button" className="btn btn-primary">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleShow}
+                >
                   Add Teachers
                 </button>
               </div>
@@ -85,6 +92,17 @@ const TeacherPage = () => {
             </section>
           </div>
         </div>
+      </div>
+
+      {/* Modal Bileşeni */}
+      <div style={{ border: '2px solid red' }}>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add a New Teacher</Modal.Title>
+          </Modal.Header>
+
+          <AddPerson />
+        </Modal>
       </div>
     </div>
   )
